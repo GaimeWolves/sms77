@@ -16,9 +16,11 @@ class SMS77ServiceProvider extends ServiceProvider
             ->needs(SMS77::class)
             ->give(function () {
                 $apiKey = config('services.sms77.api_key');
+                $apiUrl = config('services.sms77.api_url');
 
                 return new SMS77(
                     $apiKey,
+                    $apiUrl,
                     new HttpClient()
                 );
             });

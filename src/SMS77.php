@@ -10,9 +10,9 @@ use NotificationChannels\SMS77\Exceptions\CouldNotSendNotification;
 class SMS77
 {
     /**
-     * @var string SMS77 API URL.
+     * @var null|string SMS77 API URL.
      */
-    protected string $apiUrl = 'https://gateway.sms77.io/api/';
+    protected null|string $apiUrl;
 
     /**
      * @var HttpClient HTTP Client.
@@ -28,9 +28,10 @@ class SMS77
      * @param  string  $apiKey
      * @param  HttpClient  $http
      */
-    public function __construct(string $apiKey = null, HttpClient $http = null)
+    public function __construct(string $apiKey = null, string $apiUrl = null, HttpClient $http = null)
     {
         $this->apiKey = $apiKey;
+        $this->apiUrl = $apiUrl ?? 'https://gateway.seven.io/api/';
         $this->http = $http;
     }
 
